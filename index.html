@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <link rel="stylesheet" href="./css/output.css" />
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.51.6/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- <img src="./image/funny-celebrate-10.gif" alt=""> -->
+  </head>
+  <body>
+    <!-- 全体 -->
+    <!-- スタートボタン -->
+    <div id="start__wrapper" class="relative max-w-6xl mx-auto bg-slate-400">
+      <img
+        class="rounded-full w-full h-full object-cover"
+        src="./image/start-image.jpeg"
+        alt=""
+      />
+      <div
+        class="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center"
+      >
+        <button id="start" class="btn btn-primary btn-lg border-none text-5xl">
+          GAME START
+        </button>
+      </div>
+    </div>
+    <div id="container" class="hidden bg-neutral">
+      <div id="information__wrapper" class="">
+        <div id="information" class="flex justify-center mt-10 mb-10">
+          <div class="mr-10">
+            <table class="text-left">
+              <tr class="">
+                <th class="pr-10">所持ポイント</th>
+                <th id="cash"></th>
+              </tr>
+              <tr>
+                <th>勝率</th>
+                <th id="win-percentage">0%</th>
+              </tr>
+              <tr>
+                <th>勝ち</th>
+                <th id="count-win">0回</th>
+              </tr>
+              <tr>
+                <th>負け</th>
+                <th id="count-lose">0回</th>
+              </tr>
+            </table>
+          </div>
+          <div class="ml-10">
+            <input
+              type="number"
+              name=""
+              id="input-data"
+              placeholder="何ポイント賭けますか?"
+              class="border input input-bordered input-primary w-full max-w-xs"
+            />
+            <button
+              id="button1"
+              class="border btn btn-outline border-purple-600"
+            >
+              決定！
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- HIGH/LOW選択 -->
+      <div id="button__wrapper">
+        <div class="flex justify-center">
+          <button id="high-button" class="btn btn-active btn-primary mr-28">
+            HIGH
+          </button>
+          <button id="low-button" class="btn btn-active btn-primary ml-28">
+            LOW
+          </button>
+        </div>
+      </div>
+      <!-- カードエリア -->
+      <div id="card__wrapper">
+        <div id="card" class="flex justify-center">
+          <div id="my-card">
+            <img
+              id="card-before"
+              src="./image/card_reverse.png"
+              alt=""
+              class="w-72"
+            />
+          </div>
+          <div id="your-card">
+            <img
+              id="card-after"
+              src="./image/card_reverse.png"
+              alt=""
+              class="w-72"
+            />
+          </div>
+        </div>
+      </div>
+      <!-- 勝敗レコード -->
+      <div class="flex justify-center">
+        <table id="record" class="justify-center table-zebra">
+          <!-- ここに追加データが挿入される -->
+        </table>
+      </div>
+    </div>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
