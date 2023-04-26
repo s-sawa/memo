@@ -1,5 +1,5 @@
 let sArry = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-let hArry = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+// let hArry = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 // let cArry = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 // let dArry = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 let newSArry = [];
@@ -39,7 +39,6 @@ $("#button1").on("click", function () {
     cash = cash - betAmount;
     audioMoney.play();
   } else {
-    // alert("お金が足りないよ！");
     Swal.fire({
       icon: "error",
       title: "お金が",
@@ -75,7 +74,6 @@ function formatDateInHhmmss(date) {
 
   return hh + mm + ss;
 }
-// ゲーム終了チェック
 
 // ゲーム終了チェック
 function gameEnd(cash) {
@@ -86,12 +84,11 @@ function gameEnd(cash) {
       value = "lose";
 
       Swal.fire({
-        title: `${cash.toLocaleString()}ポイント借金!!`,
-        text: "ギャンブルはやめよう!",
-        imageUrl:
-          "https://image-select.mamastar.jp/interspace/wp-content/uploads/1602477430-c3b7947dcb7c2eda9bbd2a978d26b2b9-1200x630.png",
-        imageWidth: 400,
-        imageHeight: 200,
+        title: `${cash.toLocaleString()}ポイント!!`,
+        text: "ギャンブルはやめよう!(逆境無頼カイジより拝借)",
+        imageUrl: "https://koze6.com/wp-content/uploads/imgs/f/0/f09f53d8.jpg",
+        imageWidth: 443,
+        imageHeight: 335,
         imageAlt: "Custom image",
       }).then(() => {
         window.location.reload();
@@ -100,7 +97,20 @@ function gameEnd(cash) {
       const date = new Date();
       const yyyymmdd = formatDateInYyyymmdd(date);
       const hhmmss = formatDateInHhmmss(date);
-      const timestamp = yyyymmdd + hhmmss;
+      // const timestamp = yyyymmdd + hhmmss;
+      const timestamp =
+        yyyymmdd.slice(0, 4) +
+        "-" +
+        yyyymmdd.slice(4, 6) +
+        "-" +
+        yyyymmdd.slice(6) +
+        " " +
+        hhmmss.slice(0, 2) +
+        ":" +
+        hhmmss.slice(2, 4) +
+        ":" +
+        hhmmss.slice(4);
+
       localStorage.setItem(timestamp, value);
     }
     if (newSArry.length == 0) {
@@ -124,8 +134,37 @@ function gameEnd(cash) {
       const date = new Date();
       const yyyymmdd = formatDateInYyyymmdd(date);
       const hhmmss = formatDateInHhmmss(date);
-      const timestamp = yyyymmdd + hhmmss;
+      // const timestamp = yyyymmdd + hhmmss;
+      const timestamp =
+        yyyymmdd.slice(0, 4) +
+        "-" +
+        yyyymmdd.slice(4, 6) +
+        "-" +
+        yyyymmdd.slice(6) +
+        " " +
+        hhmmss.slice(0, 2) +
+        ":" +
+        hhmmss.slice(2, 4) +
+        ":" +
+        hhmmss.slice(4);
+
+      //JSON 練習
+      // const historyData = { key1: timestamp, key2: cash, key3: value };
+
+      // JSON配列
+      // const historyData2 = {
+      //   data: [
+      //     { key1: timestamp, key2: cash, key3: velue },
+      //     { key1: timestamp, key2: cash, key3: velue },
+      //     { key1: timestamp, key2: cash, key3: velue },
+      //   ],
+      // };
+
       localStorage.setItem(timestamp, value);
+      // JSON形式
+      // localStorage.setItem("data", "1");
+
+      // localStorage.setItem("data1", JSON.stringify(historyData2));
     }
     $("#container").addClass("hidden");
     $("#start").removeClass("hidden");
@@ -218,6 +257,8 @@ $("#high-button, #low-button").on("click", function () {
 $("#high-button, #low-button").on("click", function () {
   audio.play();
 });
+
+// ローカルストレージ
 for (let i = 0; i < localStorage.length; i++) {
   const key = localStorage.key(i);
   console.log(key);
